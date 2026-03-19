@@ -12,3 +12,6 @@ export default function App(index,str) {
 function f(i){
   console.log(i);
 }
+function forNothing(){
+  
+}

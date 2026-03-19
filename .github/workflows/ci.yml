@@ -7,17 +7,23 @@ on:
     branches: [main]
 
 jobs:
-  check-markdown:
+  build-react-app:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: List Markdown files
-        run: |
-          echo "Checking Markdown files..."
-          ls *.md || echo "No Markdown files found"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app
+        run: npm run build
 
       - name: Success message
-        run: echo "CI completed successfully!"
+        run: echo "React app build completed successfully!"
